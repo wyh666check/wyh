@@ -1,0 +1,75 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 700 580" width="700" height="580" font-family="system-ui, -apple-system, 'Segoe UI', 'PingFang SC', 'Microsoft YaHei', sans-serif">
+  <defs>
+    <marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M 0 0 L 10 5 L 0 10 z" fill="#98a3b3"/>
+    </marker>
+  </defs>
+
+  <rect x="0" y="0" width="700" height="580" fill="#ffffff"/>
+
+  <text x="24" y="30" font-size="15" font-weight="600" fill="#23282f">模块依赖方向（只允许向下依赖）</text>
+  <text x="24" y="48" font-size="11.5" fill="#6b7484">箭头 = 「可以依赖」。反向依赖即视为待处理项，由 scripts/check-deps.mjs 强制校验。</text>
+
+  <!-- cli -->
+  <rect x="24" y="64" width="654" height="58" rx="8" fill="#f2f6fd" stroke="#d5e1f5"/>
+  <text x="40" y="88" font-size="12.5" font-weight="600" fill="#33507e">cli</text>
+  <text x="40" y="106" font-size="10.5" fill="#6b7484">外壳层</text>
+  <rect x="176" y="74" width="486" height="38" rx="6" fill="#ffffff" stroke="#b9cdec"/>
+  <text x="192" y="98" font-size="12" fill="#23282f">CommandShell · Repl · Main（组合根，唯一装配处）</text>
+
+  <!-- session -->
+  <rect x="24" y="138" width="654" height="58" rx="8" fill="#f1f8f3" stroke="#cfe6d6"/>
+  <text x="40" y="162" font-size="12.5" font-weight="600" fill="#2f6344">session</text>
+  <text x="40" y="180" font-size="10.5" fill="#6b7484">会话层</text>
+  <rect x="176" y="148" width="486" height="38" rx="6" fill="#ffffff" stroke="#b6d8c3"/>
+  <text x="192" y="172" font-size="12" fill="#23282f">EditorSession（当前文档 + 文件路径 + History）</text>
+
+  <!-- command -->
+  <rect x="24" y="212" width="654" height="58" rx="8" fill="#fdf4ea" stroke="#f0dcc3"/>
+  <text x="40" y="236" font-size="12.5" font-weight="600" fill="#8a5a1f">command</text>
+  <text x="40" y="254" font-size="10.5" fill="#6b7484">命令层</text>
+  <rect x="176" y="222" width="486" height="38" rx="6" fill="#ffffff" stroke="#e6c9a3"/>
+  <text x="192" y="246" font-size="12" fill="#23282f">Command / EditCommand · History · CommandRegistry · 18 个命令类</text>
+
+  <!-- presentation + svgio -->
+  <rect x="24" y="286" width="654" height="66" rx="8" fill="#f5f2fc" stroke="#ded5f2"/>
+  <text x="40" y="308" font-size="12.5" font-weight="600" fill="#57408e">presentation</text>
+  <text x="40" y="326" font-size="12.5" font-weight="600" fill="#57408e">svgio</text>
+  <text x="40" y="342" font-size="10.5" fill="#6b7484">渲染 / 存储</text>
+  <rect x="176" y="296" width="224" height="46" rx="6" fill="#ffffff" stroke="#cfc2ea"/>
+  <text x="190" y="316" font-size="11.5" fill="#23282f">TreeRenderer</text>
+  <text x="190" y="332" font-size="11.5" fill="#23282f">ShapeDetailRenderer</text>
+  <rect x="416" y="296" width="246" height="46" rx="6" fill="#ffffff" stroke="#cfc2ea"/>
+  <text x="430" y="316" font-size="11.5" fill="#23282f">XmlParser · SvgReader · SvgWriter</text>
+  <text x="430" y="332" font-size="11.5" fill="#23282f">SvgDocumentStore</text>
+
+  <!-- domain -->
+  <rect x="24" y="368" width="654" height="58" rx="8" fill="#eef7fb" stroke="#cbe4ef"/>
+  <text x="40" y="392" font-size="12.5" font-weight="600" fill="#2b647c">domain</text>
+  <text x="40" y="410" font-size="10.5" fill="#6b7484">图形模型</text>
+  <rect x="176" y="378" width="486" height="38" rx="6" fill="#ffffff" stroke="#b7d9e8"/>
+  <text x="192" y="402" font-size="12" fill="#23282f">Shape 类层次 · Document · ShapeFactory（无 IO、无终端、无命令）</text>
+
+  <!-- shared -->
+  <rect x="24" y="442" width="654" height="58" rx="8" fill="#f4f6f8" stroke="#dee3e9"/>
+  <text x="40" y="466" font-size="12.5" font-weight="600" fill="#4a5361">shared</text>
+  <text x="40" y="484" font-size="10.5" fill="#6b7484">通用件</text>
+  <rect x="176" y="452" width="486" height="38" rx="6" fill="#ffffff" stroke="#d5dbe3"/>
+  <text x="192" y="476" font-size="12" fill="#23282f">AppError · CommandError · NumberText · Point · SvgElement · Arguments</text>
+
+  <!-- 依赖箭头 -->
+  <g stroke="#98a3b3" stroke-width="1.6" fill="none" marker-end="url(#arrow)">
+    <path d="M419 122 L419 146"/>
+    <path d="M419 196 L419 220"/>
+    <path d="M288 270 L288 294"/>
+    <path d="M539 270 L539 294"/>
+    <path d="M288 342 L288 376"/>
+    <path d="M539 342 L539 376"/>
+    <path d="M419 426 L419 450"/>
+  </g>
+
+  <!-- 图例 -->
+  <rect x="24" y="514" width="654" height="52" rx="8" fill="#fbfcfd" stroke="#e6eaef"/>
+  <text x="40" y="533" font-size="11" fill="#4a5361">补充：cli 亦可直接依赖 domain / shared（外壳特权，图中省略以免连线交错）；</text>
+  <text x="40" y="550" font-size="11" fill="#4a5361">任何模块都不得反向依赖 cli；presentation 与 svgio 之间也不得有依赖。</text>
+</svg>
