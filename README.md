@@ -4,6 +4,10 @@ TypeScript 实现的命令行 SVG 编辑器：**以 `id` 寻址**，命令式编
 
 架构方案、过程记录与一致性自查见 **[doc/README.md](doc/README.md)**；模块依赖图见 [doc/architecture.svg](doc/architecture.svg)。
 
+- **仓库地址**：<https://github.com/wyh666check/wyh>
+- **最终提交**：annotated tag `final`
+- **作者**：王宇豪（2801762879@qq.com）
+
 ## 快速开始
 
 ```bash

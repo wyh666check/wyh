@@ -2,6 +2,17 @@
 
 TypeScript 实现的命令行 SVG 编辑器：以 `id` 寻址，命令式编辑，支持分组（Composite）、逐命令撤销重做，读写标准 SVG 文件。
 
+- **仓库地址**：<https://github.com/wyh666check/wyh>
+- **最终提交**：annotated tag `final`，指向 `main` 分支末端提交
+- **作者**：王宇豪（2801762879@qq.com）
+
+```bash
+git clone https://github.com/wyh666check/wyh.git
+cd wyh
+git checkout final
+npm install
+```
+
 ```text
 npm install
 npm run cli                 # 交互式 REPL
